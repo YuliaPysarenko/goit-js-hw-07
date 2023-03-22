@@ -47,9 +47,8 @@ function blockAction(event) {
 
 
 const lightbox = new SimpleLightbox('.gallery li a', {
-  
+  captionsData: `alt`,
   captionSelector: `img`,
-  
   captionType: 'img alt="${description}"',
   captionPosition:`button`,
   captionDelay: 250,
@@ -57,12 +56,5 @@ const lightbox = new SimpleLightbox('.gallery li a', {
 
 
 
-// function simpleLightboxOpen() {
-//     lightbox.captionPosition().animationSpeed();
-//   }
-//     // lightbox.show();
-    // lightbox.navText();
-    // lightbox.closeText();
-    // lightbox.captions();
     
     

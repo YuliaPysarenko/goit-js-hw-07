@@ -27,36 +27,170 @@ function createdGalleryItemsEl(galleryItems) {
 console.log(galleryItemsEl);
 
 //  let imageOneEl = null;
-galleryEl.addEventListener(`click`, onGalleryItemOriginal);
-
-function onGalleryItemOriginal(event) {
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-// const isGalleryItemOriginal = event.target.classList.contains(`.gallery__item`);
-
-  // if (!isGalleryItemOriginal) {
-  //   return;
-  // }
-  //  console.log(event.target.dataset.original);
+//  galleryEl.addEventListener(`click`, onGalleryItemOriginal);
 
 
 
-  // removeActiveClassImage();
+// Варіант1
+
+// function onGalleryItemOriginal(event) {
+//   if (event.target.nodeName !== "IMG") {
+//     return;
+//   }
+
+//   const instance = basicLightbox.create(
+//     `<img src="${event.target.dataset.source}"
+// width="800" height="600"/>`);
  
-  // event.target.classList.add(`active`);
+//   instance.show();
+
+//   blockAction(event);
+// }
+
+
+// galleryEl.addEventListener("keydown" , onEscapeCloseModal)
+
+// function onEscapeCloseModal(event) {
+//   if (event.code === "Escape") {
+//     instance.close();
+//   }
   
+// }
+
+// function blockAction(event) {
+//   event.preventDefault();
+// }
+
+
+// // варіант2
+
+// function blockAction(event) {
+//   event.preventDefault();
+// }
+
+// console.log(blockAction);
+
+//  const options ={
+//   onShow: (instance) => {
+//      galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+//     //  onGalleryItemOriginal()
+   
+//   },
+//     onClose: (instance) => {
+//       galleryEl.addEventListener("keydown", onEscapeCloseModal);
+//       // onEscapeCloseModal();
+//     }
+//   }
+// // 
+
+
+//   function onGalleryItemOriginal(event) {
+//       if (event.target.nodeName !== "IMG") {
+//         return;
+//       }
+    
+//       instance = basicLightbox.create(
+//         `<img src="${event.target.dataset.source}"
+// width="800" height="600"/>`);
+//   }
+    
+//      function onEscapeCloseModal(event) {
+//       if (event.code === "Escape") {
+//         instance.close();
+//       }}
+       
+
+
+// Варіант3 
+
+//   galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+//     // onGalleryItemOriginal()
+
+//   galleryEl.addEventListener("keydown", onEscapeCloseModal);
+    
+
+//  const options = {
+//   onShow: (instance) => {
+//     onGalleryItemOriginal
+//    },
+   
+//   onClose: (instance) => {
+//     onEscapeCloseModal
+//   },
+// }
+
+// console.log(options);
+
+// //  function blockAction(event) {
+// //   event.preventDefault();
+// //  }
+
+// function onGalleryItemOriginal(event) {
+//       if (event.target.nodeName !== "IMG") {
+//         return;
+//       }
+  
+//     instance = basicLightbox.create(
+//          `<img src="${event.target.dataset.source}"
+// width="800" height="600"/>`);
+//      }
+ 
+// function onEscapeCloseModal(event) {
+//       if (event.code === "Escape") {
+//         instance.close();
+//       }
+//     }
+
+// blockAction();
+
+
+// Варіант 4
+
+function blockAction(event) {
+  event.preventDefault();
+}
+
+console.log(blockAction);
+
+const options = {
+   
+   onShow: (instance) => {
+     galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+     function onGalleryItemOriginal(event) {
+       if (event.target.nodeName !== "IMG") {
+         return;
+       }
+    
+       instance = basicLightbox.create(
+         `<img src="${event.target.dataset.source}"
+width="800" height="600"/>`);
+       
+       blockAction(event);
+       
+     }
+  },
+   onClose: (instance) => {
+      galleryEl.addEventListener("keydown",onEscapeCloseModal);
+
+      function onEscapeCloseModal(event) {
+      if (event.code === "Escape") {
+        instance.close();
+      }}
+ 
+    }
+  }
+// 
+console.log(options);
+
+
+    
+     
+
+
+
   // imageOneEl = event.target.dataset.source.original;
   // console.log(imageOneEl);
 
-  const instance = basicLightbox.create(
-    `<img src="${event.target.dataset.source}"
-width="800" height="600"/>`);
- 
-  instance.show();
-
-  blockAction(event);
-}
 
 // function removeActiveClassImage() {
 //    const images = document.querySelector(`.active`);
@@ -65,17 +199,3 @@ width="800" height="600"/>`);
 //   images.classList.remove(`active`);
 // }
 // }
-
-galleryEl.addEventListener("keydown" , onEscapeCloseModal)
-
-function onEscapeCloseModal(event) {
-  if (event.code === "Escape") {
-    instance.close();
-  }
-  
-}
-
-function blockAction(event) {
-  event.preventDefault();
-}
-
