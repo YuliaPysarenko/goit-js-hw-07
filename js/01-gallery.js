@@ -26,8 +26,54 @@ function createdGalleryItemsEl(galleryItems) {
 
 console.log(galleryItemsEl);
 
-//  let imageOneEl = null;
-//  galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+ galleryEl.addEventListener("click", onGalleryItemOriginal);
+//  galleryEl.removeEventListener("keydown", onEscapeCloseModal);
+
+// Варіант 1
+
+
+function onGalleryItemOriginal(event) {
+
+  if (event.target.nodeName !== "IMG") {
+    return;
+  }  
+
+const instance = basicLightbox.create(
+    `<img src="${event.target.dataset.source}"
+width="800" height="600"/>`,
+
+{
+  onShow: (instance) => { window.addEventListener("keydown",  onEscapeCloseModal) },
+  onClose: (instance) => { window.removeEventListener("keydown", onEscapeCloseModal) },
+}
+);
+    
+
+  instance.show();
+  onEscapeCloseModal(event);
+  blockAction(event);
+}
+
+function onEscapeCloseModal(event) {
+  if (event.code === "Escape") {
+   instance.close();
+  } 
+}
+
+function blockAction(event) {
+  event.preventDefault();
+}
+
+ 
+  // onShow: (instance) => {
+//      galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+//     //  onGalleryItemOriginal()
+   
+//   },
+//     onClose: (instance) => {
+//       galleryEl.addEventListener("keydown", onEscapeCloseModal);
+//       // onEscapeCloseModal();
+//     }
 
 
 
@@ -61,141 +107,3 @@ console.log(galleryItemsEl);
 //   event.preventDefault();
 // }
 
-
-// // варіант2
-
-// function blockAction(event) {
-//   event.preventDefault();
-// }
-
-// console.log(blockAction);
-
-//  const options ={
-//   onShow: (instance) => {
-//      galleryEl.addEventListener(`click`, onGalleryItemOriginal);
-//     //  onGalleryItemOriginal()
-   
-//   },
-//     onClose: (instance) => {
-//       galleryEl.addEventListener("keydown", onEscapeCloseModal);
-//       // onEscapeCloseModal();
-//     }
-//   }
-// // 
-
-
-//   function onGalleryItemOriginal(event) {
-//       if (event.target.nodeName !== "IMG") {
-//         return;
-//       }
-    
-//       instance = basicLightbox.create(
-//         `<img src="${event.target.dataset.source}"
-// width="800" height="600"/>`);
-//   }
-    
-//      function onEscapeCloseModal(event) {
-//       if (event.code === "Escape") {
-//         instance.close();
-//       }}
-       
-
-
-// Варіант3 
-
-//   galleryEl.addEventListener(`click`, onGalleryItemOriginal);
-//     // onGalleryItemOriginal()
-
-//   galleryEl.addEventListener("keydown", onEscapeCloseModal);
-    
-
-//  const options = {
-//   onShow: (instance) => {
-//     onGalleryItemOriginal
-//    },
-   
-//   onClose: (instance) => {
-//     onEscapeCloseModal
-//   },
-// }
-
-// console.log(options);
-
-// //  function blockAction(event) {
-// //   event.preventDefault();
-// //  }
-
-// function onGalleryItemOriginal(event) {
-//       if (event.target.nodeName !== "IMG") {
-//         return;
-//       }
-  
-//     instance = basicLightbox.create(
-//          `<img src="${event.target.dataset.source}"
-// width="800" height="600"/>`);
-//      }
- 
-// function onEscapeCloseModal(event) {
-//       if (event.code === "Escape") {
-//         instance.close();
-//       }
-//     }
-
-// blockAction();
-
-
-// Варіант 4
-
-function blockAction(event) {
-  event.preventDefault();
-}
-
-console.log(blockAction);
-
-const options = {
-   
-   onShow: (instance) => {
-     galleryEl.addEventListener(`click`, onGalleryItemOriginal);
-     function onGalleryItemOriginal(event) {
-       if (event.target.nodeName !== "IMG") {
-         return;
-       }
-    
-       instance = basicLightbox.create(
-         `<img src="${event.target.dataset.source}"
-width="800" height="600"/>`);
-       
-       blockAction(event);
-       
-     }
-  },
-   onClose: (instance) => {
-      galleryEl.addEventListener("keydown",onEscapeCloseModal);
-
-      function onEscapeCloseModal(event) {
-      if (event.code === "Escape") {
-        instance.close();
-      }}
- 
-    }
-  }
-// 
-console.log(options);
-
-
-    
-     
-
-
-
-  // imageOneEl = event.target.dataset.source.original;
-  // console.log(imageOneEl);
-
-
-// function removeActiveClassImage() {
-//    const images = document.querySelector(`.active`);
-
-//   if (images) {
-//   images.classList.remove(`active`);
-// }
-// }
