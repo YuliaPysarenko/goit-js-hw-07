@@ -31,6 +31,7 @@ console.log(galleryItemsEl);
 
 // Варіант 1
 
+let instance;
 
 function onGalleryItemOriginal(event) {
 
@@ -38,7 +39,7 @@ function onGalleryItemOriginal(event) {
     return;
   }  
 
-const instance = basicLightbox.create(
+instance = basicLightbox.create(
     `<img src="${event.target.dataset.source}"
 width="800" height="600"/>`,
 
