@@ -34,7 +34,8 @@ console.log(galleryItemsEl);
 let instance;
 
 function onGalleryItemOriginal(event) {
-
+  blockAction(event);
+  
   if (event.target.nodeName !== "IMG") {
     return;
   }  
@@ -51,8 +52,7 @@ width="800" height="600"/>`,
     
 
   instance.show();
-  onEscapeCloseModal(event);
-  blockAction(event);
+
 }
 
 function onEscapeCloseModal(event) {

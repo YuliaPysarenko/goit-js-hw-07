@@ -27,22 +27,22 @@ function createdGalleryItemsEl(galleryItems) {
 
 console.log(galleryItemsEl);
 
-galleryEl.addEventListener(`click`, onGalleryItemOriginal);
+// galleryEl.addEventListener(`click`, onGalleryItemOriginal);
 
-function onGalleryItemOriginal(event) {
-  if (event.target.nodeName !== "IMG") {
-    return;
-  }
-  // simpleLightboxOpen();
- console.log(lightbox);
+// function onGalleryItemOriginal(event) {
+//   if (event.target.nodeName !== "IMG") {
+//     return;
+//   }
+//   // simpleLightboxOpen();
+//  console.log(lightbox);
   
-  blockAction(event);
-}
+//   blockAction(event);
+// }
 
 
-function blockAction(event) {
-  event.preventDefault();
-}
+// function blockAction(event) {
+//   event.preventDefault();
+// }
 
 
 
@@ -50,7 +50,7 @@ const lightbox = new SimpleLightbox('.gallery li a', {
   captionsData: `alt`,
   captionSelector: `img`,
   captionType: 'img alt="${description}"',
-  captionPosition:`button`,
+  captionPosition:`bottom`,
   captionDelay: 250,
 });
 
